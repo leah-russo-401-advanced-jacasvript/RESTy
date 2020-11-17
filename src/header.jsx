@@ -1,12 +1,14 @@
 import React from 'react';
 
-function Header() {
+class Header extends React.Component{
 
-  return (
-    <header>
-    <h1> Welcome to RESTy!! </h1>
-    </header>
-  );
+  render() {
+    return (
+      <header>
+      <h1> Welcome to RESTy!! </h1>
+      </header>
+    );
+  }
   
 }
 
