@@ -1,0 +1,46 @@
+{
+  "name": "resty",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leah-russo-401-advanced-jacasvript/RESTy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leah-russo-401-advanced-jacasvript/RESTy/issues"
+  },
+  "homepage": "https://github.com/leah-russo-401-advanced-jacasvript/RESTy",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-plugin-react": "^7.21.5",
+    "node-sass": "^4.14.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
