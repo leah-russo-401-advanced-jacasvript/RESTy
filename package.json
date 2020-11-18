@@ -2,12 +2,13 @@
   "name": "resty",
   "version": "1.0.0",
   "description": "",
+  "homepage": "http://leahgrace555.github.io/RESTy",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -24,11 +25,15 @@
   },
   "homepage": "https://github.com/leah-russo-401-advanced-jacasvript/RESTy",
   "dependencies": {
+    "@testing-library/dom": "^7.26.7",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.1.2",
     "babel-eslint": "^10.1.0",
     "eslint-plugin-react": "^7.21.5",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-json-pretty": "^2.2.0",
     "react-scripts": "^4.0.0"
   },
   "browserslist": {
@@ -42,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

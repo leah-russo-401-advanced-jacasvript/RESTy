@@ -5,12 +5,24 @@ import ReactDOM from 'react-dom';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
 import Form from './form.jsx'
+import Results from './results.jsx';
 import './app.scss';
 
 
 
 class App extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      pokemon: {},
+
+    };
+  }
+
+  handleList = (payload) => {
+    this.setState({ pokemon: payload });
+  }
 
   render () {
 
@@ -21,9 +33,10 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <section>
-          <Form />
+          <Form handleList={this.handleList}/>
+          <Results results={this.state.pokemon} />
         </section>
-        <Footer />
+        <Footer  />
       </div>
     </div>
       
