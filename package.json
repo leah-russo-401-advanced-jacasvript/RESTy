@@ -2,7 +2,7 @@
   "name": "resty",
   "version": "1.0.0",
   "description": "",
-  "homepage": "http://leahgrace555.github.io/RESTy",
+  "homepage": "https://leah-russo-401-advanced-jacasvript.github.io/RESTy/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
