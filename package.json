@@ -2,7 +2,7 @@
   "name": "resty",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://leah-russo-401-advanced-jacasvript.github.io/RESTy/",
+  "homepage": "https://leah-russo-401-advanced-jacasvript.github.io/RESTy",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -23,7 +23,6 @@
   "bugs": {
     "url": "https://github.com/leah-russo-401-advanced-jacasvript/RESTy/issues"
   },
-  "homepage": "https://github.com/leah-russo-401-advanced-jacasvript/RESTy",
   "dependencies": {
     "@testing-library/dom": "^7.26.7",
     "@testing-library/jest-dom": "^5.11.6",
