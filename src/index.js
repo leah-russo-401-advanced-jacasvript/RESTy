@@ -21,6 +21,13 @@ class App extends React.Component {
     };
   }
 
+  async componentDidMount () {
+
+    let getHistory = JSON.parse(localStorage.getItem('history')) || [];
+
+    this.setState({ history: getHistory });
+  }
+
   handleList = (payload) => {
     this.setState({ pokemon: payload });
   }

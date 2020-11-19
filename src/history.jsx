@@ -3,17 +3,14 @@
 
 
 
-function History ( {stored, isInStorage} ) {
-
+function History ( {stored} ) {
+  
    // let items = 'No History';
 
-    if(isInStorage) {
-      //items = stored('method').map(item => <li></li>)
-    }
-  return(
+
+  return (
     <ul>
-        
-    
+      {stored.map(item=> <li key={Math.random()}>{item.method}, {item.url}</li>)}
     </ul>
   )
 
