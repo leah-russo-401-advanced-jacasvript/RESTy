@@ -26,8 +26,12 @@ class App extends React.Component {
   }
 
   handleHistory = (payload) => {
-    this.setState({ history: payload })
+    let history = [...this.state.history, payload];
+    localStorage.setItem('history', JSON.stringify(history));
+    this.setState({ history: history })
+    console.log(this.state.history);
   }
+
 
 
   render () {

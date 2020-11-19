@@ -33,11 +33,15 @@ class Form extends React.Component{
     this.props.handleHistory({ url, method: this.state.method, data }) 
   }
 
+  ///// demo ////
+
+  //////////////
+
   render() {
     return (
       <form onSubmit={this.handleSubmit} data-testid="form">
         <p>{this.state.method}: {this.state.url} {}</p>
-        <input type="text" name="url" data-testid="input"/>
+        <input  type="text" name="url" data-testid="input"/>
         <button onClick={this.handleClick}value="GET">GET</button>
         <button onClick={this.handleClick} value="POST">POST</button>
         <button onClick={this.handleClick} value="PUT">PUT</button>
