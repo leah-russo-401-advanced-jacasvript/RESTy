@@ -8,7 +8,7 @@ function History ( {stored, isInStorage} ) {
     let items = 'No History';
 
     if(isInStorage) {
-      items = stored('method').map(item => <li></li>)
+      //items = stored('method').map(item => <li></li>)
     }
   return(
     <ul>
