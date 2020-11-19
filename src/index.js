@@ -6,6 +6,7 @@ import Header from './header.jsx';
 import Footer from './footer.jsx';
 import Form from './form.jsx'
 import Results from './results.jsx';
+import History from './history.jsx';
 import './app.scss';
 
 
@@ -16,13 +17,18 @@ class App extends React.Component {
     super();
     this.state = {
       pokemon: {},
-
+      history: [],
     };
   }
 
   handleList = (payload) => {
     this.setState({ pokemon: payload });
   }
+
+  handleHistory = (payload) => {
+    this.setState({ history: payload })
+  }
+
 
   render () {
 
@@ -33,8 +39,11 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <section>
-          <Form handleList={this.handleList}/>
+          <Form handleList={this.handleList} handleHistory={this.handleHistory} />
           <Results results={this.state.pokemon} />
+        </section>
+        <section>
+          <History stored={this.state.history}/>
         </section>
         <Footer  />
       </div>

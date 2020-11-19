@@ -5,6 +5,7 @@ class Form extends React.Component{
   constructor(props) {
     super()
     this.props = props;
+    //need to store the input from the form here?
     this.state = {
       url: '',
     }
@@ -28,7 +29,8 @@ class Form extends React.Component{
     const response = await fetch(url);
     const data = await response.json();
 
-    this.props.handleList(data);  
+    this.props.handleList(data); 
+    this.props.handleHistory({ url, method: this.state.method, data }) 
   }
 
   render() {
