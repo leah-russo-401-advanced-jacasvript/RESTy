@@ -6,17 +6,22 @@ class Form extends React.Component{
     super()
     this.props = props;
     //need to store the input from the form here?
-    this.state = {
-      url: '',
-    }
+    console.log(props.method)
+    console.log(props.url);
   }
+  
+  onChange = async (event) => {
+    let url = event.target.value;
+    await this.props.setState({ url: url })
+    console.log(this.props.url)
+  } 
 
-
-
-  handleClick = (event)=> {
+  handleClick = async (event)=> {
     // need to get specific value from the buttons
+    console.log(this.props.method)
+    console.log(this.props.url)
     const method = event.target.value;
-    this.setState({ method: method,  }, ()=> {
+    await this.props.setState({ method: method,  }, ()=> {
       console.log(this.state)
     } )
   }
@@ -24,24 +29,28 @@ class Form extends React.Component{
   handleSubmit = async (event)=> {
     event.preventDefault();
     const url = event.target.url.value;
-    this.setState({ url })
-    
-    const response = await fetch(url);
+    console.log(url);
+    await this.props.setState({ url })
+    let body = this.props.body
+    let method = this.props.method;
+    const response = await fetch(url, {
+      mode: 'cors',
+      method,
+      body, 
+    });
     const data = await response.json();
 
     this.props.handleList(data); 
-    this.props.handleHistory({ url, method: this.state.method, data }) 
+    this.props.handleHistory({ url: this.props.url, method: this.props.method, data }) 
   }
 
-  ///// demo ////
-
-  //////////////
 
   render() {
+    
     return (
       <form onSubmit={this.handleSubmit} data-testid="form">
-        <p>{this.state.method}: {this.state.url} {}</p>
-        <input  type="text" name="url" data-testid="input"/>
+        <p>{this.props.method}: {this.props.url} {}</p>
+        <input onChange={this.onChange} value={this.props.url} type="text" name="url" data-testid="input"/>
         <button onClick={this.handleClick}value="GET">GET</button>
         <button onClick={this.handleClick} value="POST">POST</button>
         <button onClick={this.handleClick} value="PUT">PUT</button>
