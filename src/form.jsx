@@ -12,8 +12,13 @@ class Form extends React.Component{
   
   onChange = async (event) => {
     let url = event.target.value;
-    await this.props.setState({ url: url })
+    if(event.target.name==="url"){
+      await this.props.setState({ url: url })
+    } else if (event.target.name === "body") {
+      await this.props.setState({ body: url })
+    }
     console.log(this.props.url)
+    console.log(this.props.body)
   } 
 
   handleClick = async (event)=> {
@@ -41,7 +46,7 @@ class Form extends React.Component{
     const data = await response.json();
 
     this.props.handleList(data); 
-    this.props.handleHistory({ url: this.props.url, method: this.props.method, data }) 
+    this.props.handleHistory({ url: this.props.url, method: this.props.method, data, body: this.props.body }) 
   }
 
 
@@ -50,7 +55,12 @@ class Form extends React.Component{
     return (
       <form onSubmit={this.handleSubmit} data-testid="form">
         <p>{this.props.method}: {this.props.url} {}</p>
-        <input onChange={this.onChange} value={this.props.url} type="text" name="url" data-testid="input"/>
+        <label for="url">
+          URL:
+        </label>
+        <input onChange={this.onChange} value={this.props.url} type="text" name="url" data-testid="input"/> <br/>
+        <label for="body"> BODY: </label> 
+        <textarea value={this.props.body} name="body" onChange={this.onChange}> </textarea> <br/>
         <button onClick={this.handleClick}value="GET">GET</button>
         <button onClick={this.handleClick} value="POST">POST</button>
         <button onClick={this.handleClick} value="PUT">PUT</button>
