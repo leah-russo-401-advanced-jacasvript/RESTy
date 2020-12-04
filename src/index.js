@@ -6,6 +6,8 @@ import Header from './header.jsx';
 import Footer from './footer.jsx';
 import Form from './form.jsx'
 import Results from './results.jsx';
+import History from './history.jsx';
+import If from './if.js';
 import './app.scss';
 
 
@@ -16,13 +18,38 @@ class App extends React.Component {
     super();
     this.state = {
       pokemon: {},
-
+      history: [],
+      method: '',
+      url: '',
+      body: undefined,
+      isLoading: false,
     };
+  }
+
+  handleSetState = async (payload) => {
+    await this.setState(payload);
+  }
+  
+
+  async componentDidMount () {
+
+    let getHistory = JSON.parse(localStorage.getItem('history')) || [];
+
+    this.setState({ history: getHistory });
   }
 
   handleList = (payload) => {
     this.setState({ pokemon: payload });
   }
+
+  handleHistory = (payload) => {
+    let history = [...this.state.history, payload];
+    localStorage.setItem('history', JSON.stringify(history));
+    this.setState({ history: history })
+    console.log(this.state.history);
+  }
+
+
 
   render () {
 
@@ -33,8 +60,21 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <section>
-          <Form handleList={this.handleList}/>
+          <Form 
+          handleList={this.handleList} 
+          handleHistory={this.handleHistory}
+          setState={this.handleSetState}
+          url={this.state.url}
+          method={this.state.method}
+          body={this.state.body} />
+          <If condition={this.state.isLoading}>
+            <p>...loading</p>
+          </If>
           <Results results={this.state.pokemon} />
+        </section>
+        <section>
+          <History stored={this.state.history}
+          setState={this.handleSetState}/>
         </section>
         <Footer  />
       </div>
